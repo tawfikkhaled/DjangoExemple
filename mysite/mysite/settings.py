@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'django_admin',
         'USER' : 'postgres',
         'PASSWORD' : 'postgres',
-        'HOST' : 'vfr-test-01',
+        'HOST' : 'localhost',
         'PORT': '5432'
     }
 }
