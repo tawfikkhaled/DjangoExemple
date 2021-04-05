@@ -25,6 +25,5 @@ router.register(r'todos', views.TodoView, 'todo')
 urlpatterns = [
      path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]

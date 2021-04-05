@@ -1,0 +1,5 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/home/tawfik/.local/share/DjangoExemplePythonEnv/bin/python"
+}
