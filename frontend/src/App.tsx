@@ -2,7 +2,24 @@ import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
 
-class App extends Component {
+interface IActiveItem {
+  title : string 
+  description : string
+  completed : boolean
+}
+
+interface IState {
+  modal : boolean;
+  viewCompleted : boolean;
+  todoList : Array<any>
+  activeItem : IActiveItem
+}
+
+class IProps {
+
+}
+
+class App extends Component<IProps, IState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +49,7 @@ class App extends Component {
     this.setState({ modal: !this.state.modal });
   };
 
-  handleSubmit = (item) => {
+  handleSubmit = (item : any) => {
     this.toggle();
 
     if (item.id) {
@@ -46,7 +63,7 @@ class App extends Component {
       .then((res) => this.refreshList());
   };
 
-  handleDelete = (item) => {
+  handleDelete = (item : any) => {
     axios
       .delete(`/api/todos/${item.id}/`)
       .then((res) => this.refreshList());

@@ -1,5 +1,12 @@
+Runnning the project:
+    - run cd mysite puis python manage.py runserver 8000
+    - run cd frontend puis npm start
+
+
+
+
 create : django-admin startproject mysite
-run  : python manage.py runserver 8080
+run  : python manage.py runserver 8000
 create : python manage.py startapp polls
 create :  (in postgresql) create database django_admin;
 create : python manage.py migrate
