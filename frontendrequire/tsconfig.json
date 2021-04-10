@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "removeComments": false,
+        "sourceMap": false,
+        "experimentalDecorators": true,
+        "outDir": "js/",
+        "target": "es3",
+        "lib": [
+            "es5",
+            "es2015.core",
+            "es2015.promise",
+            "es2015.collection",
+            "dom"
+        ],
+        "module": "amd",
+        "jsx": "preserve"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
