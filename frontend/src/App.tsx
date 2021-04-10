@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Modal from "./components/Modal";
+import ModalUpload from "./components/ModalUpload";
 import axios from "axios";
 
 interface IActiveItem {
@@ -10,6 +11,7 @@ interface IActiveItem {
 
 interface IState {
   modal : boolean;
+  uploadModal : boolean;
   viewCompleted : boolean;
   todoList : Array<any>
   activeItem : IActiveItem
@@ -26,6 +28,7 @@ class App extends Component<IProps, IState> {
       viewCompleted: false,
       todoList: [],
       modal: false,
+      uploadModal:false,
       activeItem: {
         title: "",
         description: "",
@@ -43,6 +46,24 @@ class App extends Component<IProps, IState> {
       .get("/api/todos/")
       .then((res) => this.setState({ todoList: res.data }))
       .catch((err) => console.log(err));
+  };
+
+  toggleUpload = () => {
+    this.setState({ uploadModal: !this.state.uploadModal });
+  };
+
+  handleUploadSubmit = (item : any) => {
+    this.toggleUpload();
+    var formData = new FormData();
+    //var imagefile = document.querySelector('#file');
+    formData.append("file", item);
+    axios.post('/todo/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then((res) => this.refreshList());
+      
   };
 
   toggle = () => {
@@ -87,6 +108,27 @@ class App extends Component<IProps, IState> {
     return this.setState({ viewCompleted: false });
   };
 
+  uploadFile = () => {
+    this.setState({ uploadModal: !this.state.uploadModal });
+  };
+
+  setSelectedFile = (e) => {
+    console.log(e.target.files[0])
+  }
+
+  downloadFile(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
   renderTabList = () => {
     return (
       <div className="nav nav-tabs">
@@ -94,7 +136,6 @@ class App extends Component<IProps, IState> {
           onClick={() => this.displayCompleted(true)}
           className={this.state.viewCompleted ? "nav-link active" : "nav-link"}
         >
-          Complete
         </span>
         <span
           onClick={() => this.displayCompleted(false)}
@@ -157,6 +198,14 @@ class App extends Component<IProps, IState> {
                 >
                   Add task
                 </button>
+
+                <button
+                  className="btn btn-primary"
+                  onClick={this.uploadFile}
+                >
+                  Upload File
+                </button>
+
               </div>
               {this.renderTabList()}
               <ul className="list-group list-group-flush border-top-0">
@@ -170,6 +219,12 @@ class App extends Component<IProps, IState> {
             activeItem={this.state.activeItem}
             toggle={this.toggle}
             onSave={this.handleSubmit}
+          />
+        ) : null}
+        {this.state.uploadModal ? (
+          <ModalUpload
+            toggle={this.toggleUpload}
+            onSave={this.handleUploadSubmit}
           />
         ) : null}
       </main>
