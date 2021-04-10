@@ -47,3 +47,8 @@ run : passwd to change password for namenode and datanode (password : hadoop for
 
 create :   single node hadoop on windows : https://towardsdatascience.com/installing-hadoop-3-2-1-single-node-cluster-on-windows-10-ac258dd48aef
 create :   single node hadoop on ubuntu : https://phoenixnap.com/kb/install-hadoop-ubuntu
+
+
+
+Frontend prject : 
+run : cd mysite/client/static/client/frontendrequire puis gulp watch

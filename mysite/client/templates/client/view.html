@@ -1,0 +1,20 @@
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Django Project</title>
+
+    <link rel="stylesheet" href="/static/client/frontendrequire/js/style/global.css" />
+    <script src="/static/client/frontendrequire/js/require.js" type="text/javascript"></script>
+    <script src="/static/client/frontendrequire/js/require-conf.js" type="text/javascript"></script>
+
+    <script>
+        require.config({ baseUrl: '/static/client/frontendrequire/js' });
+        require(['coreui/coreui'], function (ui) { 
+          ui.DEBUG = true
+          ui.run("ui.products/products:productsGrid");
+        });
+    </script>
+</head>
+<body></body>
+</html>
