@@ -9,7 +9,7 @@
     <script src="/static/client/frontendrequire/js/require-conf.js" type="text/javascript"></script>
 
     <script>
-        require.config({ baseUrl: '/static/client/frontendrequire/js' });
+        require.config({ baseUrl: '/static/client/frontendrequire/dist' });
         require(['coreui/coreui'], function (ui) { 
           ui.DEBUG = true
           ui.run("ui.products/products:productsGrid");

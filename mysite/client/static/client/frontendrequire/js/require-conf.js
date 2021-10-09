@@ -7,6 +7,7 @@ require.config(
     ]
   },
   "paths": {
+    "css" : "../require-plugins/css"
   },
   "shim": {
     "jquery": {

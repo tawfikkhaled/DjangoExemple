@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Modal from "./components/Modal";
 import ModalUpload from "./components/ModalUpload";
+import AudioRecorder from './components/Recorder/AudioRecorder';
+import { AgGridColumn, AgGridReact } from 'ag-grid-react';
+
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import axios from "axios";
 
 interface IActiveItem {
@@ -136,6 +141,7 @@ class App extends Component<IProps, IState> {
           onClick={() => this.displayCompleted(true)}
           className={this.state.viewCompleted ? "nav-link active" : "nav-link"}
         >
+          Complete
         </span>
         <span
           onClick={() => this.displayCompleted(false)}
@@ -146,6 +152,16 @@ class App extends Component<IProps, IState> {
       </div>
     );
   };
+
+  renderRecorder = () => {
+    return (
+      <div style={{display:"none"}}>
+        This si recorder div
+        <AudioRecorder></AudioRecorder>
+      </div>
+    );
+  };
+
 
   renderItems = () => {
     const { viewCompleted } = this.state;
@@ -214,6 +230,8 @@ class App extends Component<IProps, IState> {
             </div>
           </div>
         </div>
+        {this.renderRecorder()}
+        
         {this.state.modal ? (
           <Modal
             activeItem={this.state.activeItem}

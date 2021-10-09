@@ -3,10 +3,12 @@
         "noImplicitAny": false,
         "noEmitOnError": true,
         "removeComments": false,
-        "sourceMap": false,
         "experimentalDecorators": true,
-        "outDir": "js/",
-        "target": "es3",
+        "esModuleInterop": true,
+        "target": "es6",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist/",
         "lib": [
             "es5",
             "es2015.core",
@@ -14,13 +16,10 @@
             "es2015.collection",
             "dom"
         ],
-        "module": "amd",
+        "module": "commonjs",
         "jsx": "preserve"
     },
     "exclude": [
         "node_modules"
-    ],
-    "directories": {
-        "dist": "dist/amd"
-      }
+    ]
 }

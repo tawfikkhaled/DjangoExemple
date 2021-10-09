@@ -52,3 +52,5 @@ create :   single node hadoop on ubuntu : https://phoenixnap.com/kb/install-hado
 
 Frontend prject : 
 run : cd mysite/client/static/client/frontendrequire puis gulp watch
+
+
